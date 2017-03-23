@@ -1,13 +1,12 @@
 (function(){
 
-  this.SmallFilter = function(query, items){
-    this.query = query;
-    this.items = items;
+  this.SmallFilter = function(options){
+    this.options = options;
   };
 
   SmallFilter.prototype.filter = function() {
-    var query = this.query;
-    var items = this.items;
+    var query = this.options.query;
+    var items = this.options.items;
 
     return items.filter(filteredItems);
 
