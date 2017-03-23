@@ -64,9 +64,9 @@ filteredStudents.filter();
 - Results in
   - || operator
   ```javascript
-  // Returns students Douglas and Jessica (as they match some of the queried classes)
+  // Returns students Douglas and Jessica (as they match some of the queried classes and have graduated)
   ```
   - && operator
   ```javascript
-  // Returns student Douglas (as he is the only one matching all the queried classes)
+  // Returns student Douglas (as he is the only one matching all the queried classes and have graduated)
   ```
