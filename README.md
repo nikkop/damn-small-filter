@@ -18,7 +18,7 @@ var students = [
   },
   {
     name: ['Douglas'],
-    classes: ['Programming', 'Mathematics', 'Drama'],
+    classes: ['Mathematics', 'Drama'],
     graduated: [true]
   },
   {
