@@ -7,21 +7,26 @@
   SmallFilter.prototype.filter = function() {
     var query = this.options.query;
     var items = this.options.items;
+    var operator = this.options.operator;
 
     return items.filter(filteredItems);
 
     function filteredItems(item) {
       return Object.keys(query).every(isMatchingType, item);
-    };
+    }
 
     function isMatchingType(type) {
-      return this[type].some(isMatchingSome, type);
-    };
+      var obj = {item: this, type: type};
+      if (operator == '&&') {
+        return query[type].every(isMatching, obj);
+      } else if (operator == '||' || operator == undefined) {
+        return query[type].some(isMatching, obj);
+      }
+    }
 
-    function isMatchingSome(item) {
-      return query[this].indexOf(item) >= 0 || query[this] == 0;
-    };
+    function isMatching(item) {
+      return this.item[this.type].indexOf(item) >= 0;
+    }
 
   };
-
 }());
