@@ -1,5 +1,5 @@
 # damn-small-filter
-A damn small library for filtering data based upon multiple parameters in a "or" fashion.
+A damn small library for filtering data based upon multiple parameters in a "or" or "and" fashion.
 
 ## How to use
 
@@ -30,13 +30,24 @@ var students = [
 ```
 
 - Create a `query object` with `arrays` of desired results
-```javascript
-var studentQuery = {
+  - Using the or operator (default if no operator specified)
+ ```javascript
+ var studentQuery = {
   classes: ['Programming', 'Drama'],
-  graduated: [true]
+  graduated: [true],
+  operator: '||'
 }
-// Filter on classes 'Programming' or 'Drama' and 'graduated: true'
-```
+// Filter on students with classes 'Programming' or 'Drama' and 'graduated: true'
+``` 
+  - Using the and operator
+ ```javascript
+ var studentQuery = {
+  classes: ['Programming', 'Drama'],
+  graduated: [true],
+  operator: '&&'
+}
+// Filter on students with classes 'Programming' and 'Drama' and 'graduated: true'
+``` 
 
 - Initiate the filter by creating an instance of it and provide the array and query
 ```javascript
@@ -49,6 +60,13 @@ var filteredStudents = new SmallFilter({
 - Get the filter results
 ```javascript
 filteredStudents.filter();
-// Returns the object for students 'Douglas' and 'Jessica'.
-
 ```
+- Results in
+  - || operator
+  ```javascript
+  // Returns students Douglas and Jessica (as they match some of the queried classes)
+  ```
+  - && operator
+  ```javascript
+  // Returns student Douglas (as he is the only one matching all the queried classes)
+  ```
