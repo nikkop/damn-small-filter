@@ -30,7 +30,7 @@ var students = [
 ```
 
 - Create a `query object` with `arrays` of desired results
-  - Using the or operator (default if no operator specified)
+  - Using the `or` operator (default if no operator specified)
  ```javascript
  var studentQuery = {
   classes: ['Programming', 'Drama'],
@@ -39,7 +39,7 @@ var students = [
 }
 // Filter on students with classes 'Programming' or 'Drama' and 'graduated: true'
 ``` 
-  - Using the and operator
+  - Using the `and` operator
  ```javascript
  var studentQuery = {
   classes: ['Programming', 'Drama'],
