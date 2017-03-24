@@ -1,5 +1,5 @@
 (function(){
-
+  
   this.SmallFilter = function(options){
     this.options = options;
   };
@@ -16,7 +16,10 @@
     }
 
     function isMatchingType(type) {
+      if (!validateInput(type)) throw new Error('Not a valid operator');
+
       var obj = {item: this, type: type};
+
       if (operator == '&&') {
         return query[type].every(isMatching, obj);
       } else if (operator == '||' || operator == undefined) {
@@ -28,5 +31,9 @@
       return this.item[this.type].indexOf(item) >= 0;
     }
 
+    function validateInput(input) {
+      var validInputs = ['&&', '||'];
+      return validInputs.indexOf(input) !== -1;
+    }
   };
 }());
